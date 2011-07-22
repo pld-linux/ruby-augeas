@@ -8,15 +8,13 @@ Source0:	http://augeas.net/download/ruby/%{name}-%{version}.tgz
 # Source0-md5:	b7d059cdcbe8b78727b08882b7128ba7
 Group:		Development/Languages
 URL:		http://augeas.net/
+BuildRequires:	augeas-devel
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.484
 BuildRequires:	ruby >= 1:1.8.1
 BuildRequires:	ruby-rake
 %{?ruby_mod_ver_requires_eq}
-#BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# nothing to be placed there. we're not noarch only because of ruby packaging
-%define		_enable_debug_packages	0
 
 %description
 Ruby bindings for augeas.
