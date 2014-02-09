@@ -1,11 +1,11 @@
 Summary:	Ruby bindings for augeas
 Summary(pl.UTF-8):	Wiązania języka Ruby do augeasa
 Name:		ruby-augeas
-Version:	0.4.1
+Version:	0.5.0
 Release:	1
 License:	LGPL v2.1+
-Source0:	http://augeas.net/download/ruby/%{name}-%{version}.tgz
-# Source0-md5:	b7d059cdcbe8b78727b08882b7128ba7
+Source0:	http://download.augeas.net/ruby/%{name}-%{version}.tgz
+# Source0-md5:	a132eace43ce13ccd059e22c0b1188ac
 Group:		Development/Languages
 URL:		http://augeas.net/
 BuildRequires:	augeas-devel
@@ -13,6 +13,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.484
 BuildRequires:	ruby >= 1:1.8.1
 BuildRequires:	ruby-rake
+BuildRequires:	sed >= 4.0
 %{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,7 +26,7 @@ Wiązania języka Ruby do augeasa.
 %prep
 %setup -q
 
-sed -i -e 's,"make","%{__make} CC=\\"%{__cc}\\" CFLAGS=\\"%{rpmcflags} -fPIC\\"",' Rakefile
+%{__sed} -i -e 's@"make"@"%{__make} CC=\\"%{__cc}\\" CFLAGS=\\"%{rpmcflags} -fPIC $(pkg-config --cflags augeas)\\""@' Rakefile
 
 %build
 rake build
