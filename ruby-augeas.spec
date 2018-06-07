@@ -2,7 +2,7 @@ Summary:	Ruby bindings for augeas
 Summary(pl.UTF-8):	Wiązania języka Ruby do augeasa
 Name:		ruby-augeas
 Version:	0.5.0
-Release:	4
+Release:	5
 License:	LGPL v2.1+
 Source0:	http://download.augeas.net/ruby/%{name}-%{version}.tgz
 # Source0-md5:	a132eace43ce13ccd059e22c0b1188ac
